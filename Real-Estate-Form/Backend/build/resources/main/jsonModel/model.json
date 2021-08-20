@@ -1,0 +1,24 @@
+{
+  "pdf": {
+    "pdfName": "\";",
+    "name": "\";",
+    "surname": "\";",
+    "phone": "\";",
+    "whatsapp": "\";",
+    "email": "\";",
+    "residence": false,
+    "visa": false,
+    "nationality": "\";",
+    "moneyQuant": "\";",
+    "financeType": "\";",
+    "propertyType": "\";",
+    "floors": "\";",
+    "rooms": "\";",
+    "bathrooms": " \";",
+    "garages": "\";",
+    "constructionState": "\";",
+    "minConstructionYear": "\";",
+    "state": "\";",
+    "city": "\";"
+  }
+}

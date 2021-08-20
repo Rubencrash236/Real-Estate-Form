@@ -1,0 +1,179 @@
+<div id="PDF-Body" class="container col-lg-6">
+    <div class="card mx-auto box-shadow" style="margin-top: 10px; margin-bottom: 10px;">
+      
+      <h4 class="card-subtitle" style="margin-left: 20px; margin-top: 10px;">Informaciones generales</h4>
+      <div class="margin-body">    
+        <form action="POST" class="col">
+          <div class="row mb-3 mt-2">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="name" min="3" placeholder="Nombre" name="name" #name="ngModel" [(ngModel)]="form.name" required>
+          </div>
+          <div class="row mb-3 mt-2">
+            <label for="surname" class="form-label">Apellidos</label>
+            <input type="text" class="form-control" id="surname" min="3" placeholder="Apellidos" name="surname" #surname="ngModel" [(ngModel)]="form.surname" required>
+          </div>
+          <div class="row mb-3 mt-2">
+            <label for="phone" class="form-label">Teléfono Móvil</label>
+            <input type="tel" class="form-control" id="phone" placeholder="123-456-8901" name="phone" #phone="ngModel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" [(ngModel)]="form.phone" required>
+          </div>
+          <div class="row mb-3 mt-2">
+            <label for="whatsapp" class="form-label">Whatsapp</label>
+            <input type="tel" class="form-control" id="whatsapp" placeholder="123-456-8901" #whatsapp="ngModel" name="whatsapp" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" [(ngModel)]="form.whatsapp" required>
+          </div>
+          <div class="row mb-3 mt-2">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="ejemplo@email.com" #email="ngModel" name="email" [(ngModel)]="form.email" required>
+          </div>
+          <div class="row mb-3 mt-2">
+            <div class="col-md-5">
+              <input type="checkbox" class="form-check-input" style="margin-right: 5px;" id="residence" name="residence" [value]="form.residence" (change)="isResidence($event.target)" required>
+              <label for="residence" class="form-check-label">Residente legal USA</label>
+            </div>
+            <div class="col-md-3">
+              <input type="checkbox" class="form-check-input" style="margin-right: 5px;" id="visa" [value]="form.visa" name="visa" (change)="isVisa($event.target)" required>
+              <label for="visa" class="form-check-label">Visado USA</label>
+            </div>
+            <div class="col-md-4">
+              <select name="nacionality" id="nacionality"  class="form-select" name="nationality" #nationality="ngModel" [(ngModel)]="form.nationality" required>
+                <option selected value="">País de origen</option>
+                <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <h4 class="card-subtitle" style="margin-left: 20px; margin-top: 10px;">Información sobre inversión</h4>
+      <div class="margin-body">
+        <div class="">
+          <form action="" class="col">
+            <div class="row mb-3 mt-2">
+            <label for="moneyQuant" class="form-label">Monto aproximado de inversión</label>
+              <input type="number" class="form-control" id="moneyQuant" name="moneyQuant" placeholder="Monto aproximado de inversión" #moneyQuant="ngModel" min="10000" step="50000"  [(ngModel)]="form.moneyQuant" required>
+            </div>
+            <div class="row mb-3 mt-2 margin-radio">
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name="financeType" id="cash" value="Efectivo" (change)="chooseFinanceType($event.target)">
+                <label for="cash" class="form-check-label">Efectivo</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name="financeType" id="finance" value="Financiamiento" (change)="chooseFinanceType($event.target)">
+                <label for="finance" class="form-check-label">Financiamiento</label>
+              </div>
+            </div>
+            <div class="row mb-3 mt-2">
+              <h5 class="card-subtitle mb-1">Tipo de Propiedad</h5>
+              <div class="col-md-4">
+                <div class="form-check margin-radio">
+                  <input type="radio" class="form-check-input" name="propertyType" id="singleFam" value="Single Family" (change)="choosePropertyType($event.target)">
+                  <label for="singleFam" class="form-check-label">Single Family</label>
+                </div>
+                <div class="form-check margin-radio">
+                  <input type="radio" class="form-check-input" name="propertyType" id="townHom" value="Townhome" (change)="choosePropertyType($event.target)">
+                  <label for="townHom" class="form-check-label">Townhome</label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-check margin-radio">
+                  <input type="radio" class="form-check-input" name="propertyType" id="condomio" value="Condomio"  (change)="choosePropertyType($event.target)">
+                  <label for="condomio" class="form-check-label">Condomio</label>
+                </div>
+                <div class="form-check margin-radio">
+                  <input type="radio" class="form-check-input" name="propertyType" id="villas" value="Villas"  (change)="choosePropertyType($event.target)">
+                  <label for="villas" class="form-check-label">Villas</label>
+                </div>
+              </div>
+              <div class="col-md-4 form-check">
+                <input type="radio" class="form-check-input" name="propertyType" id="villas" value="Villas">
+                <label for="villas" class="form-check-label">Otros</label>
+              </div>
+              <div class="row mb-3 mt-3">
+                <h5 class="card-subtitle">Planta Fisica de la Propiedad</h5>
+                <div class="row mt-2">
+                  <div class="">
+                    <div class="form-check margin-radio">
+                      <input type="radio" class="form-check-input" name="floors" id="one" value="Un nivel"  (change)="chooseFloorQuant($event.target)">
+                      <label for="one" class="form-check-label">Un nivel</label>
+                    </div>
+                    <div class="form-check margin-radio">
+                      <input type="radio" class="form-check-input" name="floors" id="two" value="Dos niveles" (change)="chooseFloorQuant($event.target)">
+                      <label for="two" class="form-check-label">Dos niveles</label>
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-2" style="margin-left: 1px;">
+                    <div class="col-md-6">
+                      <label for="rooms">No. de habitaciones</label>
+                      <input type="number" name="rooms" id="rooms" class="form-control" placeholder="No. de habitaciones" min="1" step="1" #rooms="ngModel" [(ngModel)]="form.rooms" required>  
+                    </div>
+                    <div class="col-md-6">
+                      <label for="bathrooms">No. de baños</label>
+                      <input type="number" name="bathrooms" id="bathrooms" class="form-control" min="1" step="1" placeholder="No. de baños" #bathrooms="ngModel"  [(ngModel)]="form.bathrooms" required>
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-2" style="margin-left: 1px;">
+                    <div class="col-md-6">
+                      <label for="garages">No. de garajes</label>
+                      <input type="number" class="form-control" name="garages" id="garages" min="0" step="1" placeholder="No. de garajes" #garages="ngModel" [(ngModel)]="form.garages" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="garages">Comunidad</label>
+                      <select name="selectComunity" id="comunity" class="form-select" #selectedComunity="ngModel" [(ngModel)]="form.comunity">
+                        <option value="" selected>Seleccione</option>
+                        <option *ngFor="let comunity of comunities" [value]="comunity">{{comunity}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3 mt-3">
+                <h5 class="card-subtitle mb-2">Estado de la construcción</h5>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="constructionState" id="new" value="Nueva" (change)="chooseConstructionState($event.target)">
+                    <label for="new" class="form-check-label">Nueva</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="constructionState" id="old" value="Usada" (change)="chooseConstructionState($event.target)">
+                    <label for="old" class="form-check-label">Usada</label>
+                  </div>
+                </div>
+                
+                  <div class="col-md-6">
+                    <label for="minConstructionYear">Año mínimo de construcción</label>
+                    <input type="number" id="year" class="form-control" name="minConstructionYear" min="1900" max="today.getFullYear()" step="1" #minConstructionYear="ngModel"  [(ngModel)]="form.minConstructionYear" placeholder="Año mínimo de construcción"  required>
+                  </div>
+              </div>
+              <div class="row mb-3 mt-3">
+                <h5 class="card-subtitle">Ubicación deseada para invertir en USA</h5>
+                <!--Missing something for the states and cities on that state make a loader for that it would be better-->
+                <div class="col-md-6">
+                  <label for="selectedStates">Estado</label>
+                  <select name="selectedStates" id="selectedStates" class="form-select" [(ngModel)]="form.state" #selectedState="ngModel">
+                    <option value="" selected>Seleccione</option>
+                    <option *ngFor="let state of stateData" [value]="state.name" (click)="getState(state)">{{state.name}}</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="selectedCity">Ciudad</label>
+                  <select name="selectedCity" id="selectedCity" class="form-select" [disabled]="!(form.state!='')" #selectedCity="ngModel" [(ngModel)]="form.city">
+                    <option value="" selected>Seleccione</option>
+                      <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+                  </select>
+                  <!--Here should be the cities should be disabled while no state is selected-->
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    <div class="card-footer ">
+      <div class="col-md-2 float-end">
+        <button type="button" class="btn btn-primary" (click)="send()" [disabled]=" !selectedComunity.valid ||!name.valid || !selectedCity.valid || !selectedState.valid || !minConstructionYear.valid || !garages.valid || !bathrooms.valid || !rooms.valid || !moneyQuant.valid || !nationality.valid || !email.valid || !surname.valid || !phone.valid || !whatsapp.valid || !isGoodToGo()" >Enviar</button>
+      </div>
+      <div class="warning col-md-" *ngIf="!selectedComunity.valid || !name.valid || !selectedCity.valid || !selectedState.valid || !minConstructionYear.valid || !garages.valid || !bathrooms.valid || !rooms.valid || !moneyQuant.valid || !nationality.valid || !email.valid || !surname.valid || !phone.valid || !whatsapp.valid || !isGoodToGo()">
+        Llene todos los campos y como se le indica.*
+      </div>
+    </div>
+    
+    </div>
+  </div>

@@ -1,0 +1,17 @@
+.margin-body {
+    margin: 0px 40px 0px 40px;
+}
+.margin-radio{
+    margin-left: 10px;
+}
+.margin-inside-div{
+    margin-left: 15px;
+}
+.warning{
+    color:brown;
+}
+.box-shadow{
+    -webkit-box-shadow: 0px 0px 7px 8px rgba(0,0,0,0.18);
+    -moz-box-shadow: 0px 0px 7px 8px rgba(0,0,0,0.18);
+    box-shadow: 0px 0px 7px 8px rgba(0,0,0,0.18);
+}

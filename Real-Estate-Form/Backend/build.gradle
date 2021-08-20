@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+mainClassName = 'Main'
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+
+    implementation 'io.javalin:javalin:3.13.9'
+    implementation 'org.slf4j:slf4j-simple:1.7.32'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.0-rc1'
+
+    implementation 'com.google.code.gson:gson:2.8.7'
+
+    // https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox
+    implementation group: 'org.apache.pdfbox', name: 'pdfbox', version: '3.0.0-RC1'
+
+    // https://mvnrepository.com/artifact/javax.activation/activation
+    implementation group: 'javax.activation', name: 'activation', version: '1.1.1'
+
+    // https://mvnrepository.com/artifact/javax.mail/javax.mail-api
+    implementation 'com.sun.mail:javax.mail:1.6.2'
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+shadowJar{
+    archivesBaseName = 'app'
+    archiveClassifier = ''
+    archiveVersion = ''
+}
+task stage{
+    dependsOn shadowJar
+
+}
+test {
+    useJUnitPlatform()
+}
